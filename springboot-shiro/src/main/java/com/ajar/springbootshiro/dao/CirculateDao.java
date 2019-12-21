@@ -15,6 +15,9 @@ public interface CirculateDao extends JpaRepository<Circulate,Integer> {
     Page<Circulate> findAll(Specification<Circulate> sysRoleSpecification, Pageable pageable);
 
     @Transactional
-    void deleteByEquipment_id(Integer Equipment_id);
+    void deleteByEquipmentId(Integer Equipment_id);
+
+    Circulate findByEquipmentIdAndType(Integer id,Integer type);
+
 }
 

@@ -1,12 +1,10 @@
 package com.ajar.springbootshiro.from;
 
 import lombok.Data;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * 产品
@@ -30,8 +28,7 @@ public class EquipmentFrom {
     /**
      * 产品类型
      */
-    @Length(max = 32,message = "长度不能超过32位")
-    @NotEmpty(message = "产品类型不能为空")
-    private String brand_id;
+    @NotNull(message = "产品类型不能为空")
+    private Integer brandId;
 
 }

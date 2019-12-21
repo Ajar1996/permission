@@ -20,5 +20,5 @@ public class BrandFrom {
      */
     @Length(max = 32,message = "长度不能超过32位")
     @NotEmpty(message = "产品类型名称不能为空")
-    private String brand_name;
+    private String brandName;
 }

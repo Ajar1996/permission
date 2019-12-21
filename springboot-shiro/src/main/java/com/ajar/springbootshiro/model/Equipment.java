@@ -33,6 +33,7 @@ public class Equipment {
     /**
      * 产品类型
      */
-    private String brand_id;
+    @Column(name = "brand_id", length = 64)
+    private Integer brandId;
 
 }

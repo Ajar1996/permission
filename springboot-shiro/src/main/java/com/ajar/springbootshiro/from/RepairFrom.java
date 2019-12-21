@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * @description:修理/报废
@@ -51,13 +52,14 @@ public class RepairFrom {
     /**
      * 设备
      */
-    @Length(max = 32,message = "长度不能超过32位")
-    @NotEmpty(message = "设备不能为空")
-    private String equipment_id;
+    @NotNull(message = "设备不能为空")
+    private Integer equipmentId;
 
     /**
      * 紧急程度
      */
+    @Length(max = 32,message = "长度不能超过32位")
+    @NotEmpty(message = "紧急程度不能为空")
     private String level;
 
     /**
@@ -68,25 +70,26 @@ public class RepairFrom {
     /**
      * 申请时间
      */
-    private String application_time;
+    private String applicationTime;
 
     /**
      * 修理时间
      */
-    private String repair_time;
+    private String repairTime;
 
     /**
      * 发出时间
      */
-    private String sent_time;
+    private String sentTime;
 
     /**
      * 状态
-     * 0：申请状态
-     * 1：确认状态
+     * 0：申请维修
+     * 1：申请报废
      * 2：修理状态
      * 3：寄回状态
+     * 4：完结状态
      */
-    private String status;
+    private Integer status;
 
 }

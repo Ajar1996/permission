@@ -12,9 +12,10 @@ import javax.transaction.Transactional;
 
 @Repository
 public interface RepairDao extends JpaRepository<Repair,Integer> {
+
     Page<Repair> findAll(Specification<Repair> sysRoleSpecification, Pageable pageable);
 
     @Transactional
-    void deleteByEquipment_id(Integer Equipment_id);
+    void deleteByEquipmentId(Integer Equipment_id);
 }
 

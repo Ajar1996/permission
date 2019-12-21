@@ -1,14 +1,14 @@
 package com.ajar.springbootshiro.from;
 
+
 import lombok.Data;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
-import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * @description:出入库
@@ -16,7 +16,9 @@ import javax.validation.constraints.NotEmpty;
  * @time: 2019/12/8 18:30
  */
 @Data
-public class CirculateFrom {
+public class CirculateFrom implements Serializable {
+
+    private static final long serialVersionUID = 819671379675845848L;
 
 
     private Integer id;
@@ -24,7 +26,8 @@ public class CirculateFrom {
     /**
      * 产品id
      */
-    private String equipment_id;
+    @NotNull(message = "产品ID不能为空")
+    private Integer equipmentId;
 
     /**
      * 借用/归还人姓名
@@ -43,7 +46,7 @@ public class CirculateFrom {
     /**
      * 出入库时间
      */
-    private String time;
+    private Data time;
 
     /**
      * 状态：
@@ -53,5 +56,7 @@ public class CirculateFrom {
 
     @Digits(integer=2,fraction=2,message = "类型必须为整数")
     @Range(min = 0,max = 1,message = "等级系数在0到1之间")
-    private String type;
+    private Integer type;
+
+
 }

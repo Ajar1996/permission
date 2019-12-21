@@ -15,6 +15,6 @@ public interface EquipmentDao  extends JpaRepository<Equipment,Integer> {
     Page<Equipment> findAll(Specification<Equipment> sysRoleSpecification, Pageable pageable);
 
     @Transactional
-    void deleteByBrand_id(Integer id);
+    void deleteByBrandId(Integer id);
 }
 

@@ -5,6 +5,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @description:出入库
@@ -28,7 +29,8 @@ public class Circulate {
     /**
      * 产品id
      */
-    private String equipment_id;
+    @Column(name = "equipment_id", length = 64)
+    private Integer equipmentId;
 
     /**
      * 借用/归还人姓名
@@ -43,13 +45,13 @@ public class Circulate {
     /**
      * 出入库时间
      */
-    private String time;
+    private Date time;
 
     /**
      * 状态：
      * 0：出库
      * 1：入库
      */
-    private String type;
+    private Integer type;
 
 }

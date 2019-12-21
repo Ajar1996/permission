@@ -26,6 +26,7 @@ public class Brand {
     /**
      * 产品类型
      */
-    private String brand_name;
+    @Column(name = "brand_name", length = 64)
+    private String brandName;
 
 }

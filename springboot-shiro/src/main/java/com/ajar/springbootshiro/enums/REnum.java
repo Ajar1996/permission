@@ -1,5 +1,7 @@
 package com.ajar.springbootshiro.enums;
 
+import com.ajar.springbootshiro.model.Equipment;
+
 /**
  * @description:返回信息枚举
  * @author: Ajar
@@ -21,7 +23,11 @@ public enum REnum {
 
     NOT_LOGIN(7,"未登录"),
 
-    NOT_PERMSSION(8,"您没有访问该功能的权限");
+    NOT_PERMSSION(8,"您没有访问该功能的权限"),
+
+    Equipmenti_EXIST(9,"设备已借出");
+
+
 
     private Integer code;
 

@@ -5,6 +5,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @description:修理/报废
@@ -48,7 +49,8 @@ public class Repair {
     /**
      * 设备
      */
-    private String equipment_id;
+    @Column(name = "equipment_id", length = 64)
+    private Integer equipmentId;
 
     /**
      * 紧急程度
@@ -63,25 +65,29 @@ public class Repair {
     /**
      * 申请时间
      */
-    private String application_time;
+    @Column(name = "application_time")
+    private Date applicationTime;
 
     /**
      * 修理时间
      */
-    private String repair_time;
+    @Column(name = "repair_time")
+    private Date repairTime;
 
     /**
      * 发出时间
      */
-    private String sent_time;
+    @Column(name = "sent_time")
+    private Date sentTime;
 
     /**
      * 状态
-     * 0：申请状态
-     * 1：确认状态
+     * 0：申请维修
+     * 1：申请报废
      * 2：修理状态
      * 3：寄回状态
+     * 4：完结状态
      */
-    private String status;
+    private Integer status;
 
 }

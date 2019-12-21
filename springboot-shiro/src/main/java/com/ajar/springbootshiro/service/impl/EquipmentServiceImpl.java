@@ -13,6 +13,7 @@ import com.ajar.springbootshiro.service.UserService;
 import com.ajar.springbootshiro.utils.JPAUtil;
 import com.ajar.springbootshiro.utils.RUtil;
 import com.ajar.springbootshiro.utils.ShiroUtil;
+import com.ajar.springbootshiro.vo.EquipmentVo;
 import com.ajar.springbootshiro.vo.Result;
 import com.ajar.springbootshiro.vo.UserVo;
 import lombok.extern.slf4j.Slf4j;
@@ -79,20 +80,22 @@ public class EquipmentServiceImpl implements EquipmentService {
 
     @Override
     public Result updateEquipment(EquipmentFrom equipmentFrom) {
-        Equipment resource=new Equipment();
-        BeanUtils.copyProperties(equipmentFrom,resource);
+        Equipment equipment=new Equipment();
+        BeanUtils.copyProperties(equipmentFrom,equipment);
 
-        Equipment resourceSave=equipmentDao.save(resource);
+        Equipment equipmentSave=equipmentDao.save(equipment);
 
-        log.info("设备信息更新={}"+resourceSave);
+        log.info("设备信息更新={}"+equipmentSave);
         return RUtil.success();
     }
 
     @Override
     public Result deleteEquipment(Integer id) {
         equipmentDao.deleteById(id);
-        circulateDao.deleteByEquipment_id(id);
-        repairDao.deleteByEquipment_id(id);
+        circulateDao.deleteByEquipmentId(id);
+        repairDao.deleteByEquipmentId(id);
         return RUtil.success();
     }
+
+
 }

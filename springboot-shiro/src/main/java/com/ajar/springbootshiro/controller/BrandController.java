@@ -2,8 +2,8 @@ package com.ajar.springbootshiro.controller;
 
 import com.ajar.springbootshiro.enums.REnum;
 import com.ajar.springbootshiro.exception.SystemException;
-import com.ajar.springbootshiro.from.EquipmentFrom;
-import com.ajar.springbootshiro.service.EquipmentService;
+import com.ajar.springbootshiro.from.BrandFrom;
+import com.ajar.springbootshiro.service.BrandService;
 import com.ajar.springbootshiro.utils.Assert;
 import com.ajar.springbootshiro.vo.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -16,77 +16,77 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @description:设备
+ * @description:设备类型
  * @author: Ajar
  * @time: 2019/10/19 19:41
  */
 @RestController
 @Slf4j
 @RequestMapping("/admin")
-public class EquipmentController {
+public class BrandController {
 
     @Autowired
-    EquipmentService equipmentService;
+    BrandService brandService;
 
     /**
-     * @description:查找设备列表
+     * @description:查找设备类型列表
      * @author: Ajar
      * @time: 2019/10/19 16:23
      */
-    @RequiresPermissions("sys:equipment:list")
-    @GetMapping("/selectEquipmentList")
-    public Result selectEquipmentList(@RequestParam(value = "page", defaultValue = "0") Integer page,
+    @RequiresPermissions("sys:brand:list")
+    @GetMapping("/selectBrandList")
+    public Result selectBrandList(@RequestParam(value = "page", defaultValue = "0") Integer page,
                                       @RequestParam(value = "size", defaultValue = "10") Integer size,
                                       @RequestParam(value = "name", defaultValue = "") String name) {
 
         Pageable pageable = PageRequest.of(page, size);
-        return equipmentService.selectEquipmentList(name, pageable);
+        return brandService.selectBrandList(name, pageable);
     }
 
 
     /**
-     * @description:修改设备
+     * @description:修改设备类型
      * @author: Ajar
      * @time: 2019/10/19 16:31
      */
-    @RequiresPermissions("sys:equipment:update")
-    @PutMapping("/updateEquipment")
-    public Result updateEquipment(@Validated @RequestBody EquipmentFrom equipmentFrom, BindingResult bindingResult) {
-        Assert.isNull(equipmentFrom.getId(), "id不能为空");
+    @RequiresPermissions("sys:brand:update")
+    @PutMapping("/updateBrand")
+    public Result updateBrand(@Validated @RequestBody BrandFrom brandFrom, BindingResult bindingResult) {
+        Assert.isNull(brandFrom.getId(), "id不能为空");
         if (bindingResult.hasErrors()) {
-            log.info("[更新设备]设备参数不正确={}" + equipmentFrom);
+            log.info("[更新设备类型]设备类型参数不正确={}" + brandFrom);
             throw new SystemException(REnum.PARAM_ERROR.getCode(), bindingResult.getFieldError().getDefaultMessage());
         }
-        return equipmentService.updateEquipment(equipmentFrom);
+        return brandService.updateBrand(brandFrom);
     }
 
 
 
     /**
-     * @description:删除设备
+     * @description:删除设备类型
      * @author: Ajar
      * @time: 2019/10/19 16:31
      */
-    @RequiresPermissions("sys:equipment:delete")
-    @DeleteMapping("/deleteEquipment/{id}")
-    public Result deleteEquipment(@PathVariable Integer id) {
-        return equipmentService.deleteEquipment(id);
+    @RequiresPermissions("sys:brand:delete")
+    @DeleteMapping("/deleteBrand/{id}")
+    public Result deleteBrand(@PathVariable Integer id) {
+        return brandService.deleteBrand(id);
     }
 
     /**
-     * @description:保存设备
+     * @description:保存设备类型
      * @return:
      * @author: Ajar
      * @time: 2019/10/19 16:31
      */
-    @RequiresPermissions("sys:equipment:insert")
-    @PostMapping("/saveEquipment")
-    public Result saveRole(@Validated @RequestBody EquipmentFrom equipmentFrom, BindingResult bindingResult) {
+    @RequiresPermissions("sys:brand:insert")
+    @PostMapping("/saveBrand")
+    public Result saveRole(@Validated @RequestBody BrandFrom brandFrom, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            log.error("[新增设备]参数不正确：roleFrom={}" + equipmentFrom);
+            log.error("[新增设备类型]参数不正确：roleFrom={}" + brandFrom);
             throw new SystemException(REnum.PARAM_ERROR.getCode(), bindingResult.getFieldError().getDefaultMessage());
         }
-        return equipmentService.saveEquipment(equipmentFrom);
+        return brandService.saveBrand(brandFrom);
     }
 
 }

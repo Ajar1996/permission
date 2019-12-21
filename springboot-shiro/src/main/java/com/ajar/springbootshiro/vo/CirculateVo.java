@@ -40,7 +40,7 @@ public class CirculateVo {
     /**
      * 出入库时间
      */
-    private String time;
+    private Data time;
 
     /**
      * 状态：
